@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+   
+</style>
+<body>
+        <h2 class="user">LOGIN</h2>
+
+       
+    <div class="main">
+      
+
+        
+        <form>
+            <input type="text" placeholder="Enter customer_id" required>
+            <br>
+             <br>
+            <input type="password" placeholder="password" required>
+            <br>
+            <br>
+            <br>
+            <input type="submit">
+        </form>
+    </div>
+    <h1 id="nn"></h1>
+    <script>
+        var d = document.forms;
+
+        d[0].addEventListener("submit", function(e) {
+            e.preventDefault();
+            var sign = localStorage.getItem("data") || "[]"; 
+            var pg = JSON.parse(sign);
+            console.log(pg);
+
+            var customer_id = e.target[0].value;
+            var password = e.target[1].value;
+            var credentialsMatch = false;
+let nam;
+            for (let i = 0; i < pg.length; i++) {
+                let res = pg[i].customer_id;
+                console.log(res)
+                let pas = pg[i].password;
+                 nam=pg[i].name;
+
+                if (customer_id == res && password == pas) {
+                    credentialsMatch = true;
+                    break;
+                }
+            }
+
+            if (!credentialsMatch) {
+                alert("check the credetails")
+            } else {
+                var x=document.getElementById("nn");
+                x.innerHTML="Namasthe...."+nam;
+            }
+
+            e.target[0].value = "";
+            e.target[1].value = "";
+        });
+    </script>
+    
+</body>
+</html>
